@@ -34,8 +34,55 @@ var wordList =
 
 
 var randomItem = function(items) {
-index = Math.floor(Math.random()*wordList.length)
-return index
+  index = Math.floor(Math.random()*wordList.length);
+  return items[index];
 }
 
-// console.log(wordList[randomItem()])
+
+var answer = randomItem(wordList);
+console.log("The magic word is " + answer);
+
+
+// document.querySelector(".alphabet") will return first HTML elements classed ".alphabet"
+// document.querySelectorAll(".alphabet") will return all HTML elements classed ".alphabet"
+// querySelectorAll with an added [#] will give that specific HTML element
+
+
+
+// addEventListener for js/page magic
+
+var removeGuess = function(e) {
+  console.log(e);
+};
+
+var bumpCount = function(e) {
+  var target = e.target;
+  if (Number(target.innerHTML) >= 15 || target.innerHTML == "NO MORE") {
+    target.innerHTML = "NO MORE"
+  } else {
+   target.innerHTML = Number(target.innerHTML) +1
+  }
+};
+
+var el = document.querySelector("#turn-count");
+el.addEventListener('click', bumpCount);
+
+
+// var el = document.querySelector("#turn-count");
+// el.addEventListener("click", function(e) {
+//   console.log(e);
+//   target = e.target
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+

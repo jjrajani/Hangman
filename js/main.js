@@ -74,7 +74,13 @@ el.addEventListener('click', bumpCount);
 //   target = e.target
 // });
 
-
+var butt = document.querySelector(".form-button");
+butt.addEventListener('click', function(e) {
+  e.preventDefault();
+  var input = document.querySelector(".count-input");
+  var turns = document.querySelector("#turn-count");
+  turns.textContent = input.value
+});
 
 
 

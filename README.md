@@ -18,5 +18,3 @@
         return items[index];
     }
 ```
-
-![Hangman](http://vignette3.wikia.nocookie.net/adventuretimewithfinnandjake/images/f/f8/Hangman_Stlye.png/revision/latest?cb=20121204144833)

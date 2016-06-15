@@ -12,7 +12,7 @@ Actions:
   if guess is worng lose a turn
   fill in letters
   game over
-
+  add _ _ _ _ for word
 */
 
 var sayHi = function(name) {
@@ -23,10 +23,10 @@ console.log("Hangman is just a game");
 // sayHi(prompt("Please enter your name."))
 
 var turns_left = function() {
-  return document.getElementById('turn-count').textContent;
+  return Number(document.getElementById('turn-count').textContent);
 }
 
-var guesses = [];
+var guessed = [];
 
 var wordList = 
   ["cookies", "elephant", "doughnut", "doge", "transport", "recursion", "agriculture", "antidisestablishmentarianism",
@@ -74,15 +74,27 @@ el.addEventListener('click', bumpCount);
 //   target = e.target
 // });
 
-var butt = document.querySelector(".form-button");
-butt.addEventListener('click', function(e) {
-  e.preventDefault();
-  var input = document.querySelector(".count-input");
-  var turns = document.querySelector("#turn-count");
-  turns.textContent = input.value
+// var butt = document.querySelector(".form-button");
+// butt.addEventListener('click', function(e) {
+//   e.preventDefault();
+//   var input = document.querySelector(".count-input");
+//   var turns = document.querySelector("#turn-count");
+//   turns.textContent = input.value
+// });
+
+var letters = document.querySelector(".alphabet");
+letters.addEventListener('click', function(event) {
+  var text = event.target.textContent;
+  if (!guessed.includes(text)) {
+    //Add class to an element with JavScript
+    event.target.classList.add("guessed"); //classList does NOT need the '.' befroe the class name.  iT already knows its a class
+    guessed.push(text);
+    console.log(text);
+    console.log(guessed);
+  } else {
+    alert("You already guessed that dummy.");
+  };
 });
-
-
 
 
 

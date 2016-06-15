@@ -20,6 +20,14 @@ var turnCount = document.getElementById('turn-count')
 var answer = randomItem(wordList);
 console.log("The magic word is " + answer);
 
+var board = document.querySelector("#board")
+var newHTML = "";
+for(var i = 0; i < answer.length; i++) {
+  newHTML += "<p></p>"
+}
+
+board.innerHTML = newHTML;
+
 var removeGuess = function(e) {
   console.log(e);
 };
@@ -52,8 +60,6 @@ el.addEventListener('click', bumpCount);
 
 var letters = document.querySelector(".alphabet");
 letters.addEventListener('click', makeGuess);
-
-
 
 
 

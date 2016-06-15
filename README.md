@@ -11,3 +11,11 @@
         }
     ```
 * Used `.classList.add()` to add class to strike out guessed letters.
+* Used below code to generate random word selection from array of words.
+    ```javascript
+    var randomItem = function(items) {
+        index = Math.floor(Math.random()*wordList.length);
+        return items[index];
+    }
+```
+

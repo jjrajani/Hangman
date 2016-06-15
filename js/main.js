@@ -35,31 +35,95 @@ var removeGuess = function(e) {
 var bumpCount = function(e) {
   var target = e.target;
   if (Number(target.innerHTML) >= 15 || target.innerHTML == "NO MORE") {
-    target.innerHTML = "NO MORE"
+    alert("Game over you greedy cheater")
+    location.reload()
   } else {
    target.innerHTML = Number(target.innerHTML) +1
   }
 };
 
+var gameOver = function() {
+  alert("you lose")
+}
+
 var makeGuess = function (e) {
   var pageNode = e.target;
   var letter = pageNode.textContent;
   //cross out guessed letters
+  if (turnCount.textContent == 0) {
+        gameOver()
+        location.reload()
+      }
+
   if (!guessed.includes(letter)) {
     pageNode.classList.add("guessed");
     guessed.push(letter);
     //change turn count
     if (!answer.includes(letter)) {
       turnCount.textContent = Number(turnCount.textContent) - 1;
+    } else {
+      spaces = document.querySelectorAll("#board p");
+      spaces[answer.indexOf(letter)].textContent = letter
     }
   }
 }
+
+var youWin = function() {
+  alert("YOU WIN!")
+  location.reload();
+}
+
+
 
 var el = document.querySelector("#turn-count");
 el.addEventListener('click', bumpCount);
 
 var letters = document.querySelector(".alphabet");
 letters.addEventListener('click', makeGuess);
+
+correctGuessed = 0
+
+var keyStroke = document.onkeypress = function(e) {
+    letter = ''
+
+    e = e || window.event;
+    var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+    if (charCode) {
+        letter = String.fromCharCode(charCode)
+        letterGuessed = document.getElementById(letter)
+        letterGuessed.classList.add("guessed")
+        if (turnCount.textContent == 0) {
+          gameOver()
+          location.reload()
+        }
+
+
+        if (!guessed.includes(letter)) {
+          guessed.push(letter);
+          //change turn count
+        if (!answer.includes(letter)) {
+          turnCount.textContent = Number(turnCount.textContent) - 1;
+        } else {
+          spaces = document.querySelectorAll("#board p");
+
+          for (i in answer) {
+            if (answer[i] == letter && spaces[i].textContent == "") {
+              spaces[i].textContent = letter
+              correctGuessed++
+
+              if (correctGuessed == answer.length) {
+                youWin()
+              }
+            }
+          }
+
+          // spaces[answer.indexOf(letter)].textContent = letter
+    }
+  }
+
+    }
+
+};
 
 
 

@@ -7,7 +7,20 @@ console.log("Hangman is just a game");
 var guessed = [];
 
 var wordList = 
-  ["cookies", "elephant", "doughnut", "doge", "transport", "recursion", "agriculture", "antidisestablishmentarianism",
+  ["apple", "animal", "against", "antagonistic", "anticlamactic", "answer", "another", "barbell",
+   "baseball", "ballooon", "beige", "bananas", "banker", "controls", "chart", "change", "classic",
+   "clever", "dinosaur", "delicious", "delight", "default", "disco", "emergency", "escort",
+   "eventually", "electric", "finish", "flatten", "figure", "fox", "flamingo", "great", "garage", 
+   "giant", "greenbeans", "hyper", "human", "holistic", "hillarious", "igloo", "ignorant", "instead",
+   "inside", "intent", "jenna", "jellyfish", "juice", "jungle", "kite", "killer", "kindness", "knot",
+   "lioness", "liver", "lofty", "language", "luminous", "mountain", "mindless", "mixture", "mirror",
+   "nose", "nightlight", "noxious", "nightmare", "option", "only", "ostentatious", "overly", "popcorn",
+   "precious", "pillow", "pressure", "quiet", "question", "quiver", "quest", "restfull", "regain",
+   "remember", "relation", "stupendous", "stubborn", "spacious", "sliver", "titanium", "teardrop", 
+   "tiger", "telecaster", "umbrella", "underneath", "universal", "unsure", "vendetta", "vicarious",
+   "vivid", "violent", "windshield", "west", "whenever", "wholesome", "xylophone", "xanthium", "yodel",
+   "yearning", "yeast", "yesterday", "young", "zipper", "zapping", "zoology", "cookies", "elephant", "doughnut", "doge", "transport", 
+   "recursion", "agriculture", "antidisestablishmentarianism",
    "espresso", "computer", "transmorgify", "lightsaber"];
 
 var randomItem = function(items) {
@@ -43,7 +56,7 @@ var bumpCount = function(e) {
 };
 
 var gameOver = function() {
-  alert("you lose")
+  alert("You hung! The word was " + answer)
 }
 
 var makeGuess = function (e) {
@@ -92,7 +105,7 @@ var keyStroke = document.onkeypress = function(e) {
         letter = String.fromCharCode(charCode)
         letterGuessed = document.getElementById(letter)
         letterGuessed.classList.add("guessed")
-        if (turnCount.textContent == 0) {
+        if (turnCount.textContent < 2) {
           gameOver()
           location.reload()
         }

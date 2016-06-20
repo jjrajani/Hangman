@@ -63,10 +63,7 @@ var makeGuess = function (e) {
   var pageNode = e.target;
   var letter = pageNode.textContent;
   //cross out guessed letters
-  if (turnCount.textContent == 0) {
-        gameOver()
-        location.reload()
-      }
+  
 
   if (!guessed.includes(letter)) {
     pageNode.classList.add("guessed");
@@ -79,6 +76,10 @@ var makeGuess = function (e) {
       spaces[answer.indexOf(letter)].textContent = letter
     }
   }
+  if (turnCount.textContent == 0) {
+        gameOver()
+        location.reload()
+      }
 }
 
 var youWin = function() {

@@ -24,9 +24,11 @@
 
 #board p {
   border-bottom: 2px solid black;
-  margin: 10px;
+  margin: 0 10px 10px 10px;
   height: 50px;
   width: 25px;
   display: block;
   float: left;
+  font-size: 2em;
+  text-align: center;
 }
